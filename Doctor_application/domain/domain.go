@@ -19,6 +19,7 @@ type Appointment struct {
 	To            string `json:"to"`
 }
 
+//Doctor duplicate data
 //Duplicate of Doctor Details && int Time Slots for decision making
 type Doctordup struct {
 	Id      string `json:"doctorid"`
