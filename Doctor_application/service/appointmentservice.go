@@ -12,7 +12,10 @@ var respdoctor domain.RespDoctor
 
 var appointment domain.Appointment
 
-func FindSuitableAppointment() {
+func GetSuitableAppointment(w http.ResponseWriter, r *http.Request) {
+	w.Header().Add("Content-Type", "application/json")
+	json.NewDecoder(r.Body).Decode(&appointment)
+	Gettintvalues()
 	var apptfstr string
 	var appttstr string
 	for i := 11; i < 13; i++ {
@@ -29,14 +32,6 @@ func FindSuitableAppointment() {
 				break
 			}
 		}
+		json.NewEncoder(w).Encode(respdoctor)
 	}
-}
-
-func GetSuitableAppointment(w http.ResponseWriter, r *http.Request) {
-	w.Header().Add("Content-Type", "application/json")
-	json.NewDecoder(r.Body).Decode(&appointment)
-	Gettintvalues()
-	FindSuitableAppointment()
-
-	json.NewEncoder(w).Encode(respdoctor)
 }
